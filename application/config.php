@@ -27,19 +27,19 @@
  *    configures the application to use the keyring in keys/
  *    tests won't run
  */
-define('APPLICATION_MODE', 'PRODUCTION');
-//define('APPLICATION_MODE', 'TESTING');
+//define('APPLICATION_MODE', 'PRODUCTION');
+define('APPLICATION_MODE', 'TESTING');
 
-if (defined('APPLICATION_MODE') and APPLICATION_MODE == 'TESTING') {
+if (APPLICATION_MODE == 'TESTING') {
   /**
    * KEYRING_DIR string where the testing pubring.gpg and trustdb.gpg are
    */
-  define('KEYRING_DIR', '/var/www/keyserver/tests/keys');
+  define('KEYRING_DIR', '/var/www/phpks/tests/keys');
 
   /**
    * TEST_URL_PREFIX string
    */
-  define('TEST_URL_PREFIX', 'http://keys.service.gagamux.net');
+  define('TEST_URL_PREFIX', 'http://keys.example.org');
 
   /**
    * ADMIN_MODE_AVAILABLE bool
@@ -47,17 +47,17 @@ if (defined('APPLICATION_MODE') and APPLICATION_MODE == 'TESTING') {
    */
   define('ADMIN_MODE_AVAILABLE', true);
 }
-elseif (defined('APPLICATION_MODE') and APPLICATION_MODE == 'PRODUCTION') {
+elseif (APPLICATION_MODE == 'PRODUCTION') {
   /**
    * KEYRING_DIR string where the production pubring.gpg and trustdb.gpg are
    */
-  define('KEYRING_DIR', '/var/www/keyserver/keys');
+  define('KEYRING_DIR', '/var/www/phpks/keys');
 
   /**
    * ADMIN_MODE_AVAILABLE bool
    * true to enable admin mode
    */
-  define('ADMIN_MODE_AVAILABLE', true);
+  define('ADMIN_MODE_AVAILABLE', false);
 }
 else {
   throw new \Exception(
@@ -74,4 +74,4 @@ define('GPG_BINARY', '/usr/bin/gpg');
 /**
  * APPLICATION_TITLE string
  */
-define('APPLICATION_TITLE', 'PHPKS Public Key Server');
+define('APPLICATION_TITLE', 'Public Key Server');
