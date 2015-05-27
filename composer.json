@@ -1,0 +1,21 @@
+{
+  "require": {
+    "slim/slim": "~2.6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.5.*"
+  },
+  "config": {
+    "vendor-dir": "vendor/"
+  },
+  "autoload": {
+    "psr-4": {
+      "Controller\\":       "application/controller/",
+      "Model\\":            "application/model/",
+      "Model\\Error\\":     "application/model/error/",
+      "Model\\Parser\\":    "application/model/parser/",
+      "Model\\Validator\\": "application/model/validator/",
+      "View\\":             "application/view/"
+    }
+  }
+}

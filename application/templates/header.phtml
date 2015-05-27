@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+  <title><?php echo $formatter->escape($title); ?></title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<?php if ($useStyleSheet) { ?>
+  <link type="text/css" rel="stylesheet" href="/style.css" />
+<?php } ?>
+</head>
+<body>
+<div id="main">
+<?php if (APPLICATION_MODE != 'PRODUCTION') { ?>
+
+  <h1>TESTING MODE,
+    @see&nbsp;application/config.php, @see&nbsp;README</h1>
+
+<?php } ?>
+<div id="header">
+  <h1><?php echo $formatter->escape($title); ?></h1>
+</div>

@@ -1,0 +1,8 @@
+How to get Thunderbird User Agent with Enigmail to fetch unknown keys from
+this Server
+
+* make the server listen on TCP 11371
+* in Thunderbird: Enigmail->Preferences->Keyserver
+* add the name of the server like keys.example.org
+* when sending an email that should be encrypted now you can
+  click "Download missing keys", may take a few seconds, works for me :)

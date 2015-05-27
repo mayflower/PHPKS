@@ -1,0 +1,21 @@
+<h2>Search for a public key</h2>
+<form action="<?php echo $controllerPath; ?>/lookup" method="get">
+  <div class="searchInput">
+    <input name="search" id="search-key-input"/>
+  </div>
+
+  <div class="searchOptions">
+    <label><input type="radio" name="op" value="index" checked="checked">simple</label>
+    <label><input type="radio" name="op" value="vindex">verbose</label>
+
+  <?php if ($isAdminMode) { ?>
+    <input type="hidden" name="fingerprint" value="on">
+  <?php } else { ?>
+    <label><input type="checkbox" name="fingerprint" value="on" checked="checked">show fingerprints</label>
+  <?php } ?>
+  </div>
+
+  <div class="submit">
+    <input type="submit" value="Search" />
+  </div>
+</form>
