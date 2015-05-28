@@ -22,6 +22,7 @@ require '../vendor/autoload.php';
 $app = new \Slim\Slim(array(
   'debug'           => (APPLICATION_MODE != 'PRODUCTION'),
   'templates.path'  => '../application/templates',
+  'log.enabled'     => true,
 ));
 
 $app->map('/', function () use ($app) {
@@ -84,10 +85,10 @@ $app->group('/+pks', function () use ($app) {
     $controller->lookupAction();
   });
 });
-
+/*
 $app->map('.*', function () use ($app) {
   $controller = new Controller\Index($app);
   $controller->setBadRequestResponse();
 })->via('DELETE', 'GET', 'HEAD', 'OPTIONS', 'PATCH', 'POST', 'PUT', 'TRACE');
-
+*/
 $app->run();

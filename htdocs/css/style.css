@@ -72,7 +72,7 @@ ol      {   padding-left: 30px;         }
 .searchInput {
     /*border:           1px solid #CC5C01;*/
     border:           1px solid #000;
-    background:       url(search.png) #fff no-repeat;
+    background:       url(../images/search.png) #fff no-repeat;
     background-position: 5px 3px;
     height:           45px;
     min-height:       40px;
@@ -133,5 +133,5 @@ textarea {
     border:           1px solid #000;
 }
 #keytext {
-    background:       url(padlock.png) #fff no-repeat center;
+    background:       url(../images/padlock.png) #fff no-repeat center;
 }
