@@ -41,9 +41,10 @@ profile::frontend::coffee_script: false
 profile::frontend::grunt: false
 
 profile::app::symfony2: false
-profile::app::yii1: true
+profile::app::yii1: false
 profile::app::yii2: false
 profile::app::zend_framework1: false
+profile::app::slim: true
 profile::app::php_vhost: false  # simple vhost that sends all *.php to php-fpm
 profile::app::standalone_app: false  # proxy to an app that comes with a webserver (rails, django, flask)
 
