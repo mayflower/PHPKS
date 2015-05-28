@@ -23,6 +23,8 @@ $app = new \Slim\Slim(array(
   'debug'           => (APPLICATION_MODE != 'PRODUCTION'),
   'templates.path'  => '../application/templates',
   'log.enabled'     => true,
+  'log.writer'      => new \Slim\LogWriter(fopen('../logs/application.log', 'a')),
+  'log.level'       => \Slim\Log::DEBUG,
 ));
 
 $app->map('/', function () use ($app) {
@@ -31,7 +33,7 @@ $app->map('/', function () use ($app) {
 })->via('GET', 'HEAD')->name('index');
 
 if (ADMIN_MODE_AVAILABLE) {
-  $app->group('/admin', function () use ($app, $logger) {
+  $app->group('/admin', function () use ($app) {
     $app->map('/+add/*', function () use ($app) {
       $app->redirect('/admin', 301);
     })->via('GET', 'HEAD');
@@ -85,10 +87,10 @@ $app->group('/+pks', function () use ($app) {
     $controller->lookupAction();
   });
 });
-/*
+
 $app->map('.*', function () use ($app) {
   $controller = new Controller\Index($app);
   $controller->setBadRequestResponse();
 })->via('DELETE', 'GET', 'HEAD', 'OPTIONS', 'PATCH', 'POST', 'PUT', 'TRACE');
-*/
+
 $app->run();
