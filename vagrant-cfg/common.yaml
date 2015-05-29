@@ -7,7 +7,7 @@ vhost_aliases: [ ]
 box_name: mayflower/trusty64-puppet3
 
 ip: 192.168.56.84
-nfs: true
+nfs: false
 
 profile::packages::names:
   - vim
@@ -21,4 +21,9 @@ profile::app::slim: true
 
 component::slim::docroot: htdocs
 
+php::extensions:
+  curl: {}
+  intl: {}
 
+php::settings:
+  Date/date.timezone: Europe/Berlin
