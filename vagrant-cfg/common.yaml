@@ -1,7 +1,7 @@
 ---
 
 ## common config variables
-path: /var/www/phpks/htdocs
+path: /var/www/phpks
 vhost: phpks.dev
 vhost_aliases: [  ]
 
@@ -179,6 +179,7 @@ hhvm::config::port: 9090  # make sure that hhvm and php5-fpm ports don't collide
 #      xdebug.remote_enable: 'On'
 #      xdebug.default_enable: 'On'
 #      xdebug.remote_connect_back: 'On'
+component::slim::docroot: htdocs
 
 ## cli and fpm php.ini settings
 # php::settings:
