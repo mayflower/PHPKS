@@ -1,5 +1,11 @@
-<h2 class="msg">The Keys were added</h2>
-gpg output:
-<textarea rows="3"><?php
-  echo $formatter->escape($keysAddedResponse);
-?></textarea>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    The Keys were added
+  </div>
+  <div class="panel-body">
+    <p>gpg output:</p>
+    <textarea rows="3"><?php
+      echo $formatter->escape($keysAddedResponse);
+    ?></textarea>
+  </div>
+</div>

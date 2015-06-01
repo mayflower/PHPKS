@@ -175,7 +175,8 @@ class Pks extends Index {
       'title'     => sprintf(
         '%s -- GET "%s"', APPLICATION_TITLE, $lookupParams->getSearch()
       ),
-      'useStyleSheet' => false,
+      'useStyleSheet' => true,
+      'search' => $lookupParams->getSearch(),
     );
     $this->render('pks-armoredKeys.phtml', $data);
   }
@@ -198,7 +199,8 @@ class Pks extends Index {
       'title'           => sprintf(
         '%s -- INDEX "%s"', APPLICATION_TITLE, $lookupParams->getSearch()
       ),
-      'useStyleSheet'   => false,
+      'useStyleSheet'   => true,
+      'search' => $lookupParams->getSearch(),
     );
     $this->render('pks-indexList.phtml', $data);
   }
@@ -243,7 +245,8 @@ class Pks extends Index {
         APPLICATION_TITLE,
         $lookupParams->getSearch()
       ),
-      'useStyleSheet'   => false,
+      'useStyleSheet'   => true,
+      'search' => $lookupParams->getSearch(),
     );
     $this->render('pks-vindexList.phtml', $data);
   }

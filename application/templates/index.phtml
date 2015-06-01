@@ -1,5 +1,5 @@
 <?php require 'header.phtml'; ?>
-<div id="center">
+<div class="container">
   <?php if (isset($keysAddedResponse)) {
     require 'index-keys-added.phtml';
   } ?>
@@ -9,22 +9,8 @@
   } ?>
 
   <?php
-    require 'index-search-form.phtml';
     require 'admin-export-all.phtml';
     require 'index-submit-form.phtml';
   ?>
-
-  <br />
-
-  <p>Here is how to add a key to the server&#39;s keyring:</p>
-  <ol>
-    <li><p>Cut-and-paste an ASCII-armored version of your public key
-      into the text box.</p></li>
-    <li><p>Press &quot;Submit&quot;.</p></li>
-  </ol>
-  <p>That is it! The keyserver will process your request immediately.
-      If you like, you can check that your key exists using the
-      extract procedure above.
-  </p>
 </div>
 <?php require 'footer.phtml'; ?>

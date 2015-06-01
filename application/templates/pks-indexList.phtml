@@ -1,39 +1,54 @@
 <?php require 'header.phtml'; ?>
-<pre>Type bits/keyID     Date       User ID</pre>
-<?php foreach ($keys as $lines) { ?>
-<hr />
-<pre><?php
-  foreach ($lines as $line) {
-    if ($line['recordType'] == 'pub') {
-      printf(
-        "pub  %s/%s  %s %s\n",
-        $line['bits'],
-        $formatter->formatKeyIdLink($controllerPath, $line['keyId']),
-        $formatter->formatTst($line['creationTst']),
-        $formatter->formatGetLink(
-          $controllerPath, $line['keyId'], $line['userId']
-        )
-      );
-    }
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>bits / keyID</th>
+        <th>Date</th>
+        <th>User ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($keys as $lines) {
+          foreach ($lines as $line) { ?>
+              <tr<?php if ($line['recordType'] == 'pub') { echo ' class="active"'; } ?>>
+          <?php
+            if ($line['recordType'] == 'pub') {
+              printf(
+                "<td>pub</td><td>%s / %s</td><td>%s</td><td>%s</td>\n",
+                $line['bits'],
+                $formatter->formatKeyIdLink($controllerPath, $line['keyId']),
+                $formatter->formatTst($line['creationTst']),
+                $formatter->formatGetLink(
+                  $controllerPath, $line['keyId'], $line['userId']
+                )
+              );
+            }
 
-    elseif ($line['recordType'] == 'fpr' and $showFingerprint) {
-      printf(
-        "         Fingerprint=%s\n",
-        $formatter->formatFingerprint($line['fingerprint'])
-      );
+            elseif ($line['recordType'] == 'fpr' and $showFingerprint) {
+              printf(
+                "<td><small>fpr</small></td><td colspan=\"3\">%s</td>\n",
+                $formatter->formatFingerprint($line['fingerprint'])
+              );
 
-      if ($isAdminMode) {
-        require 'admin-remove-form.phtml';
-      }
-    }
+              if ($isAdminMode) {
+                require 'admin-remove-form.phtml';
+              }
+            }
 
-    elseif ($line['recordType'] == 'uid') {
-      printf(
-        "                               %s\n",
-        htmlentities($line['userId'], ENT_HTML5)
-      );
-    }
-  }
-?></pre>
-<?php } ?>
+            elseif ($line['recordType'] == 'uid') {
+              printf(
+                "                               %s\n",
+                htmlentities($line['userId'], ENT_HTML5)
+              );
+            }
+            ?></tr>
+            <?php
+          }
+        } ?>
+    </tbody>
+  </table>
+</div>
+
 <?php require 'footer.phtml'; ?>

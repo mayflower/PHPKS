@@ -1,8 +1,23 @@
-<h2>Submit a key to the server</h2>
-<form id="add_key" action="<?php echo $controllerPath; ?>/add" method="post">
-  Enter ASCII-armored PGP key here:
-  <textarea id="keytext" name="keytext" rows="20" cols="66"></textarea>
-  <div class="submit">
-    <input type="submit" value="Submit" />
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Submit a key to the server
   </div>
-</form>
+  <div class="panel-body">
+    <form id="add_key" action="<?php echo $controllerPath; ?>/add" method="post">
+      <div class="form-group">
+        <label for="keytext">Enter ASCII-armored PGP key here:</label>
+        <textarea class="form-control" id="keytext" name="keytext" rows="15" cols="66"></textarea>
+        <span id="helpKeytext" class="help-block">
+          Here is how to add a key to the server&#39;s keyring:
+          <ol>
+            <li>Cut-and-paste an ASCII-armored version of your public key into the text box.</li>
+            <li>Press &quot;Submit&quot;.</li>
+          </ol>
+          That is it! The keyserver will process your request immediately.
+          If you like, you can check that your key exists using the extract procedure above.
+        </span>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
