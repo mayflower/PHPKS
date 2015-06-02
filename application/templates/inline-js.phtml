@@ -1,7 +1,11 @@
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-  var field = document.getElementById('search-key-input');
-  if (field) {
-    field.focus();
-  }
+  $(document).ready(function() {
+    $('.operation-menu label').on('click', function() {
+      $('.operation-menu button .text').text($(this).text());
+    });
+    $('.operation-menu input[name="op"]:checked').trigger('click');
+    $('#search-key-input').focus();
+  });
 </script>

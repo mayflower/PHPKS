@@ -6,16 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php if ($useStyleSheet) { ?>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
 <?php } ?>
 </head>
 <body>
 <div id="main">
-<?php if (APPLICATION_MODE != 'PRODUCTION') { ?>
-
-  <h1>TESTING MODE,
-    @see&nbsp;application/config.php, @see&nbsp;README</h1>
-
-<?php } ?>
   <div class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
@@ -35,3 +30,11 @@
       </div>
     </div>
   </div>
+
+  <?php if (APPLICATION_MODE != 'PRODUCTION') { ?>
+    <div class="container">
+      <div class="alert alert-warning" role="alert">
+        <strong>TESTING MODE</strong>, @see&nbsp;application/config.php, @see&nbsp;README
+      </div>
+    </div>
+  <?php } ?>

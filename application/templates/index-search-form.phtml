@@ -1,29 +1,70 @@
-<form class="navbar-form navbar-right" role="search" action="<?php echo $controllerPath; ?>/lookup" method="get">
-  <div class="form-group">
+<form class="navbar-form navbar-right search-header" role="search" action="<?php echo $controllerPath; ?>/lookup" method="get">
+  <div class="input-group">
     <input type="text" name="search" id="search-key-input" class="form-control" placeholder="Search for a public key"
-      value="<?php if (isset($search)) { echo $search; } ?>"
-      >
-  </div>
+           value="<?php if (isset($search)) { echo $search; } ?>">
+    <div class="input-group-btn operation-menu">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <span class="text"></span> <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-right" role="menu">
+        <li>
+          <label class="radio-inline" for="radio-index">
+            <input type="radio" id="radio-index" name="op" value="index" checked="checked" <?php
+            if (isset($operation) && 'index' === $operation) { echo ' checked="checked"'; } ?>/>
+            Simple
+          </label>
+        </li>
+        <li>
+          <label class="radio-inline" for="radio-vindex">
+            <input type="radio" id="radio-vindex" name="op" value="vindex"<?php
+            if (isset($operation) && 'vindex' === $operation) { echo ' checked="checked"'; } ?> />
+            Verbose
+          </label>
+        </li>
+      </ul>
+    </div><!-- /btn-group -->
+
+    <?php if ($isAdminMode) { ?>
+      <input type="hidden" name="fingerprint" value="on" checked="checked" />
+    <?php } else { ?>
+      <span class="input-group-addon">
+        <input type="checkbox" id="checkbox-fingerprint" name="fingerprint" value="on"<?php
+        if (!isset($showFingerprint) || true === $showFingerprint) { echo ' checked="checked"'; } ?> />
+        <label for="checkbox-fingerprint">Fingerprints</label>
+      </span>
+    <?php } ?>
+    <span class="input-group-btn">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </span>
+  </div><!-- /input-group -->
+
+  <!--
+
   <div class="form-group">
     <label class="radio-inline" for="radio-index">
-      <input type="radio" id="radio-index" name="op" value="index" checked="checked" />
+      <input type="radio" id="radio-index" name="op" value="index" checked="checked" <?php
+      if (isset($operation) && 'index' === $operation) { echo ' checked="checked"'; } ?>/>
       simple
     </label>
     <label class="radio-inline" for="radio-vindex">
-      <input type="radio" id="radio-vindex" name="op" value="vindex">
+      <input type="radio" id="radio-vindex" name="op" value="vindex"<?php
+        if (isset($operation) && 'vindex' === $operation) { echo ' checked="checked"'; } ?> />
       verbose
     </label>
   </div>
   <div class="form-group">
-    <?php if ($isAdminMode) { ?>
-      <input type="hidden" name="fingerprint" value="on">
+    <?php if ($isAdminMode) { ?> showFingerprint
+      <input type="hidden" name="fingerprint" value="on"<?php
+      if (isset($showFingerprint) && true === $showFingerprint) { echo ' checked="checked"'; } ?> />
     <?php } else { ?>
       <label class="checkbox-inline" for="checkbox-fingerprint">
-        <input type="checkbox" id="checkbox-fingerprint" name="fingerprint" value="on" checked="checked">
+        <input type="checkbox" id="checkbox-fingerprint" name="fingerprint" value="on"<?php
+        if (!isset($showFingerprint) || true === $showFingerprint) { echo ' checked="checked"'; } ?> />
         show fingerprints
       </label>
     <?php } ?>
   </div>
 
   <button type="submit" class="btn btn-default">Search</button>
+  -->
 </form>

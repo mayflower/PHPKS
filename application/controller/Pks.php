@@ -201,6 +201,7 @@ class Pks extends Index {
       ),
       'useStyleSheet'   => true,
       'search' => $lookupParams->getSearch(),
+      'operation' => 'index',
     );
     $this->render('pks-indexList.phtml', $data);
   }
@@ -247,6 +248,7 @@ class Pks extends Index {
       ),
       'useStyleSheet'   => true,
       'search' => $lookupParams->getSearch(),
+      'operation' => 'vindex',
     );
     $this->render('pks-vindexList.phtml', $data);
   }
