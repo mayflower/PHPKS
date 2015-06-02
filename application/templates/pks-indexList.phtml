@@ -7,6 +7,7 @@
         <th>bits / keyID</th>
         <th>Date</th>
         <th>User ID</th>
+        <?php if ($isAdminMode) { echo '<th></th>'; } ?>
       </tr>
     </thead>
     <tbody>
@@ -14,6 +15,7 @@
           foreach ($lines as $line) { ?>
               <tr<?php if ($line['recordType'] == 'pub') { echo ' class="active"'; } ?>>
           <?php
+            $showAdminRemoveForm = false;
             if ($line['recordType'] == 'pub') {
               printf(
                 "<td>pub</td><td>%s / %s</td><td>%s</td><td>%s</td>\n",
@@ -33,7 +35,7 @@
               );
 
               if ($isAdminMode) {
-                require 'admin-remove-form.phtml';
+                $showAdminRemoveForm = true;
               }
             }
 
@@ -42,6 +44,13 @@
                 "                               %s\n",
                 htmlentities($line['userId'], ENT_HTML5)
               );
+            }
+            if ($isAdminMode) {
+              echo '<td>';
+              if ($showAdminRemoveForm) {
+                require 'admin-remove-form.phtml';
+              }
+              echo '</td>';
             }
             ?></tr>
             <?php

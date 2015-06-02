@@ -1,3 +1,6 @@
+a .glyphicon:first-child {
+  margin-right: 5px; }
+
 .search-header {
   padding-right: 0; }
   .search-header .input-group-btn button {

@@ -8,6 +8,7 @@
           <th>cr. time</th>
           <th>exp time</th>
           <th></th>
+          <?php if ($isAdminMode) { echo '<th></th>'; } ?>
         </tr>
       </thead>
       <tbody>
@@ -17,6 +18,7 @@
         ?>
           <tr<?php if ($line['recordType'] == 'pub') { echo ' class="active"'; } ?>>
           <?php
+            $showAdminRemoveForm = false;
             if ($line['recordType'] == 'pub') {
               printf(
                 "<td>pub</td><td>%s / %s</td><td>%s</td><td>%s</td><td></td>\n",
@@ -34,7 +36,7 @@
               );
 
               if ($isAdminMode) {
-                require 'admin-remove-form.phtml';
+                $showAdminRemoveForm = true;
               }
             }
 
@@ -54,6 +56,14 @@
                   $controllerPath, $line['keyId'], $line['userId']
                 )
               );
+            }
+
+            if ($isAdminMode) {
+              echo '<td>';
+              if ($showAdminRemoveForm) {
+                require 'admin-remove-form.phtml';
+              }
+              echo '</td>';
             }
           }
         ?>
