@@ -20,7 +20,7 @@ profile::database::mysql: false
 profile::app::symfony2: false
 profile::app::slim: true
 
-component::slim::docroot: htdocs
+component::slim::path: /var/www/phpks/htdocs
 
 php::extensions:
   curl: {}
